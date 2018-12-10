@@ -45,3 +45,22 @@ Create pod to read from snapshot
 ```shell
 kubectl apply -f pod-read-ssd.yaml
 ```
+
+read from that disk
+
+```shell
+kubectl exec read-ssd-pod -c read-ssd-container -- cat /there/1.log
+```
+
+## Cleanup
+
+```shell
+kubectl delete pods/read-ssd-pod
+kubectl delete jobs/write-to-disk
+kubectl delete pvc/ssd-data-restore
+kubectl delete pvc/ssd-data
+kubectl delete pv/ssd-data-restore-volume
+kubectl delete storageclass/faster
+gcloud compute disks delete restored-pd-ssd --zone=$ZONE
+gcloud compute snapshots list --filter="(sourceDisk=$DISK_LINK)" --format="csv[no-heading,delimiter=','](name)" | xargs -I {} gcloud compute snapshots delete {}
+```
