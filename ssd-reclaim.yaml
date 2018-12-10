@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ssd-data-restore-volume
+spec:
+  storageClassName: faster
+  capacity:
+    storage: 30Gi
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: estored-pd-ssd
+    fsType: ext4
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: ssd-data-restore
+# spec:
+#   storageClassName: faster
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 30Gi
