@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ssd-data
+spec:
+  storageClassName: faster
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 30Gi
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ssd-data-volume
+spec:
+  storageClassName: faster
+  capacity:
+    storage: 500G
+  accessModes:
+    - ReadWriteOnce
+  gcePersistentDisk:
+    pdName: ssd-data
+    fsType: ext4
