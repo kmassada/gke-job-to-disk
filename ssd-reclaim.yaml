@@ -9,7 +9,7 @@ spec:
   accessModes:
     - ReadWriteOnce
   gcePersistentDisk:
-    pdName: estored-pd-ssd
+    pdName: restored-pd-ssd
     fsType: ext4
 # ---
 # apiVersion: v1
