@@ -39,3 +39,9 @@ Create Disk from that snapshot
 ```shell
 gcloud compute disks create restored-pd-ssd --size=30GB --source-snapshot=$FIRST_SNAPSHOT --type=pd-ssd --zone=$ZONE
 ```
+
+Create pod to read from snapshot
+
+```shell
+kubectl apply -f pod-read-ssd.yaml
+```
