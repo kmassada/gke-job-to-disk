@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: ssd-data
 spec:
-  storageClassName: pd-ssd
+  storageClassName: faster
   accessModes:
     - ReadWriteOnce
   resources:
@@ -15,7 +15,7 @@ kind: PersistentVolume
 metadata:
   name: ssd-data-volume
 spec:
-  storageClassName: pd-ssd
+  storageClassName: faster
   capacity:
     storage: 500G
   accessModes:
