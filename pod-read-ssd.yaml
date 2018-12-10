@@ -1,0 +1,19 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: read-ssd-pod
+spec:
+  volumes:
+    - name: ssd-data-restore-mount
+      persistentVolumeClaim:
+       claimName: ssd-data-restore
+  containers:
+    - name: read-ssd-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/there"
+          name: ssd-data-restore-mount
+
